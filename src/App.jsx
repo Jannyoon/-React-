@@ -1,5 +1,8 @@
-import './App.module.css';
+import { FaCirclePlay, FaCirclePause, FaCircleStop } from "react-icons/fa6";
 import { useState, useEffect, useRef } from 'react';
+import styles from './App.module.css';
+
+
 export default function App() { 
   //pause, start, 
   const [running, setRunning] = useState("start");
@@ -20,12 +23,12 @@ export default function App() {
   }, [running]); 
   
   return (
-    <div>
+    <div className={styles.timerBox}>
       <span ref={intervalT}>{`${String(Math.floor(nowTime/60)).padStart(2,'0')}:${String(nowTime%60).padStart(2,'0')}`}</span>
-      <div className='btn_Container'>
-        <button onClick={()=>setRunning("start")}>start</button>
-        <button onClick={()=>setRunning("pause")}>pause</button>
-        <button onClick={()=>setRunning("init")}>stop</button>
+      <div className={styles.container}>
+        <button onClick={()=>setRunning("start")}><FaCirclePlay /></button>
+        <button onClick={()=>setRunning("pause")}><FaCirclePause /></button>
+        <button onClick={()=>setRunning("init")}><FaCircleStop /></button>
       </div>
 
     </div>
